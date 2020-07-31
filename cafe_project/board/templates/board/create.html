@@ -1,0 +1,18 @@
+{% extends 'layout/layout.html' %}
+{% block content %}
+<section class = "container"> <!--포스트는 편지봉투에 넣어 보내는 우편 방식, 겟은 편지를 쓰고 바로 보여주는 방식-->
+<form action = "{% url 'board_create' %}" method="POST"> <!--포스트 방식으로 해당. 포스트 방식은 데이터를 넘기는것. get이랑 차이점은 get은 데이터 자체 또는 리쉐스트 자체가 될 수 있음 = 어드민 아니여도 모두 접근 가능, post 암호화-->
+    {% csrf_token %} <!--포스트 방식은 암호화/토큰화 시켜서 데이터를 보내는 방식. 포스트방식에서는 이렇게 하지 않으면 전달 불가-->
+    <div class="form-group">
+        <label for="TitleInput">Title</label>
+        <input type="text" class="form-control" id="TitleInput" name="title">
+    </div>
+      
+      <div class="form-group">
+      <label for="contentInput">Content</label>
+      <textarea class="form-control" id="contentInput" name='content' rows="5"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</setion>
+{% endblock %}

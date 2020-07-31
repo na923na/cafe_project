@@ -1,0 +1,10 @@
+{% extends 'layout/layout.html' %}
+{% block content %}
+    <form action="{% url 'board_update' board.pk %}" method='POST'>
+    {%csrf_token%}
+    <input type='text' name='title' value='{{board.title}}'> <!--for in 구문과 다른건, 직접 데이터 수정이 가능-->
+    <input type='text' name='author' value='{{board.author}}'> <!---->
+    <textarea name='content'>{{board.content}}</textarea>
+    <button type= 'sumbit'>submit</button>
+    </form>
+{% endblock %}
